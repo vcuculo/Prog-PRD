@@ -6,10 +6,9 @@
 randn('seed', 1e5);
 rand('seed', 1e5);
 
-dataSetName = 'alldist';
+dataSetName = 'allpoint';
 experimentNo = 1;
 [Y, lbls] = lvmLoadData(dataSetName);
-
 % Set up model
 options = fgplvmOptions('ftc');
 latentDim = 2;
@@ -27,17 +26,20 @@ options.kern.comp{2}.variance = 1e-3^2;
 model = fgplvmAddDynamics(model, 'gp', options);
 
 % Optimise the model.
-iters = 500;
+iters = 100;
 display = 1;
 
 model = fgplvmOptimise(model, display, iters);
 
 % Save the results.
 modelWriteResult(model, dataSetName, experimentNo);
+save model.mat model;
+% 
+% if exist('printDiagram') & printDiagram
+%   lvmPrintPlot(model, lbls, dataSetName, experimentNo);
+% end
 
-if exist('printDiagram') & printDiagram
-  lvmPrintPlot(model, lbls, dataSetName, experimentNo);
-end
+%plot(modelTest.X(:, 1), modelTest.X(:, 2), '^-', 'linewidth',1)
 
 % Load the results and display dynamically.
 lvmResultsDynamic(model.type, dataSetName, experimentNo, 'vector');

@@ -20,7 +20,7 @@ cla(visualiseInfo.plotAxes);
 
 lvmScatterPlot(model, YLbls,   visualiseInfo.plotAxes, ...
                [visualiseInfo.dim1, visualiseInfo.dim2], ...
-               visualiseInfo.latentPos);
+               visualiseInfo.latentPos,1);
   
 
 set(get(visualiseInfo.plotAxes, 'title'), 'string', 'X', 'fontsize', 30);

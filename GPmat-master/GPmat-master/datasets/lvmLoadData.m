@@ -1068,6 +1068,61 @@ function [Y, lbls, Ytest, lblstest] = lvmLoadData(dataset, seedVal)
     end
     Y=data;
     
+    case 'testpoint'
+    load pointsTestK10.mat;
+    N=size(datas,2); 
+    L=size(datas(1).points,1);
+    C=size(datas(1).points,2);
+    data =zeros(N,L*C);
+    for i=1:N
+        data(i,:)=reshape(datas(i).points,L*C,1);
+    end
+    Y=data;
+    
+    case 'img123'
+    load image123.mat;
+    N=size(datas,2); 
+    L=size(datas(1).points,1);
+    C=size(datas(1).points,2);
+    data =zeros(N,L*C);
+    for i=1:N
+        data(i,:)=reshape(datas(i).points,L*C,1);
+    end
+    Y=data;
+    
+    case 'img234'
+    load image234.mat;
+    N=size(datas,2); 
+    L=size(datas(1).points,1);
+    C=size(datas(1).points,2);
+    data =zeros(N,L*C);
+    for i=1:N
+        data(i,:)=reshape(datas(i).points,L*C,1);
+    end
+    Y=data;
+    
+    case 'img345'
+    load image345.mat;
+    N=size(datas,2); 
+    L=size(datas(1).points,1);
+    C=size(datas(1).points,2);
+    data =zeros(N,L*C);
+    for i=1:N
+        data(i,:)=reshape(datas(i).points,L*C,1);
+    end
+    Y=data;
+    
+    case 'img12345'
+    load image12345.mat;
+    N=size(datas,2); 
+    L=size(datas(1).points,1);
+    C=size(datas(1).points,2);
+    data =zeros(N,L*C);
+    for i=1:N
+        data(i,:)=reshape(datas(i).points,L*C,1);
+    end
+    Y=data;
+    
    otherwise
     error('Unknown data set requested.')
     

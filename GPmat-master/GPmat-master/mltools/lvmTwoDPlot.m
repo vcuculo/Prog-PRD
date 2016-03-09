@@ -1,4 +1,4 @@
-function [returnVal, txtReturnVal] = lvmTwoDPlot(X, lbl, symbol, fhandle)
+function [returnVal, txtReturnVal] = lvmTwoDPlot(X, lbl, symbol, doTest, fhandle)
 
 % LVMTWODPLOT Helper function for plotting the labels in 2-D.
 % FORMAT
@@ -38,7 +38,7 @@ if nargin < 3 || isempty(symbol)
         symbol = getSymbols(size(lbl,2));
     end
 end
-if nargin > 3 && ~isempty(fhandle)
+if nargin > 4 && ~isempty(fhandle)
     axisHand = fhandle;
 else
     axisHand = gca;
@@ -58,7 +58,7 @@ for i = 1:(size(X, 1)/15)
 %         labelNo = 1;
 %     end
     %try
-    returnVal = [returnVal; plot(X(deb:15*i, 1), X(deb:15*i, 2), symbol{labelNo}, 'linewidth',1)];%
+    returnVal = [returnVal; plot(X(deb:15*i, 1), X(deb:15*i, 2), symbol{labelNo}, 'linewidth',1)];
     if labelsString
         textReturnVal = [textReturnVal; text(X(i, 1), X(i, 2), ['   ' lblStr{i}])];
     end
@@ -75,6 +75,41 @@ for i = 1:(size(X, 1)/15)
     % end
     %end
 end
+
+% if doTest==1
+%     % Set up test model
+%     dataSetNameTest = 'testpoint';
+%     %load('demAllpointFgplvm1.mat','kern');
+%     [Y, lbls] = lvmLoadData(dataSetNameTest);
+%     optionsTest = fgplvmOptions('ftc');
+%     latentDim = 2;
+%     d = size(Y, 2);
+%     modelTest = fgplvmCreate(latentDim, d, Y, optionsTest);% création du model des valeurs de test
+%     load model.mat;
+%     
+%     % Add dynamics model.
+%     options = gpOptions('ftc');
+%     options.kern = model.kern;
+%     modelTest = fgplvmAddDynamics(modelTest, 'gp', options);
+%     modelTest.K_uu = model.K_uu;
+%     modelTest.invK_uu = model.invK_uu;
+%     modelTest.logDetK_uu = model.logDetK_uu;
+%     modelTest.innerProducts = model.innerProducts;
+%     modelTest.bias = model.bias;
+%     modelTest.scale = model.scale;
+%     modelTest.numParams = model.numParams;
+%     modelTest.dynamics.bias = model.dynamics.bias;
+%     modelTest.dynamics.K_uu = model.dynamics.K_uu;
+%     modelTest.dynamics.invK_uu = model.dynamics.invK_uu;
+%     modelTest.dynamics.logDetK_uu = model.dynamics.logDetK_uu;
+%     modelTest.dynamics.innerProducts = model.dynamics.innerProducts;
+%     
+%     
+%     iters=100;
+%     display=1;
+%     modelTest = fgplvmOptimise(modelTest, display, iters);
+%     returnVal = [returnVal; plot(modelTest.X(:, 1), modelTest.X(:, 2), '^-', 'linewidth',1)];
+% end
 set(axisHand, 'nextplot', nextPlot);
 set(returnVal, 'markersize', 10);
 set(returnVal, 'linewidth', 2);

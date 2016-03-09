@@ -33,26 +33,33 @@ visualize=0;
 %------------------------------------------------%
 % % % Load Test Images
 
-%image_path='1-joie/';
-%image_path='test_images/';
-%img_list=dir([image_path,'*.png']);
 index=0;
-for j=1:5
-    for i=1:15
-        data(index+i).name = strcat(num2str(j),'.',num2str(i),'.png');
-        data(index+i).img = im2double(imread(strcat(num2str(j),'.',num2str(i),'.png')));
-
-        % % % Required Only for bbox_method = 2; 
-        data(index+i).bbox = []; % Face Detection Bounding Box [x;y;w;h]
-
-        % % % Initialization to store the results
-        data(index+i).points = []; % MAT containing 66 Landmark Locations
-        data(index+i).pose = []; % POSE information [Pitch;Yaw;Roll]
-    end
-    index=index+15;
-end
+% for j=1:5
+%     for i=1:15
+%         data(index+i).name = strcat(num2str(j),'.',num2str(i),'.png');
+%         data(index+i).img = im2double(imread(strcat(num2str(j),'.',num2str(i),'.png')));
+% 
+%         % % % Required Only for bbox_method = 2; 
+%         data(index+i).bbox = []; % Face Detection Bounding Box [x;y;w;h]
+% 
+%         % % % Initialization to store the results
+%         data(index+i).points = []; % MAT containing 66 Landmark Locations
+%         data(index+i).pose = []; % POSE information [Pitch;Yaw;Roll]
+%     end
+%     index=index+15;
+% end
 %------------------------------------------------%
+for i=1:5
+    data(index+i).name = strcat('1.',num2str(i),'.png');
+    data(index+i).img = im2double(imread(strcat('1.',num2str(i),'.png')));
 
+    % % % Required Only for bbox_method = 2; 
+    data(index+i).bbox = []; % Face Detection Bounding Box [x;y;w;h]
+
+    % % % Initialization to store the results
+    data(index+i).points = []; % MAT containing 66 Landmark Locations
+    data(index+i).pose = []; % POSE information [Pitch;Yaw;Roll]
+end
 
 %------------------------------------------------%
 %Run Demo
@@ -67,5 +74,5 @@ for i=1:size(data,2)
     datas(i)= struct('points',data(i).points,'dist',dist);
 end
 
-save pointsAllK10.mat datas;
+save image12345.mat datas;
 disp('DONE');

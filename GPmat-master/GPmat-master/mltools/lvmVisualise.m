@@ -121,7 +121,7 @@ set(get(visualiseInfo.visualiseAxes, 'title'), 'string', 'Y', 'fontsize', 30);
 set(visualiseInfo.visualiseAxes, 'position', [0.05 0.05 0.9 0.8]);
 
 visualiseInfo.visualiseFunction = str2func(visualiseFunction);
-visHandle = visualiseInfo.visualiseFunction(visData(1:dim), varargin{:});
+visHandle = visualiseInfo.visualiseFunction(visData(1:dim));
 if verLessThan('matlab', 'R2014a')
   set(visHandle, 'erasemode', 'xor')
 end
