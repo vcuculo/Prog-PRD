@@ -965,90 +965,13 @@ function [Y, lbls, Ytest, lblstest] = lvmLoadData(dataset, seedVal)
     Y = Y(1:16:end, :);
     %~/
     
-   case 'Test'
-    load learning.mat;
-    N=size(obs,1); 
-    D=length(obs{1}.data);
-    data=zeros(N,D); 
-    for i=1:N
-        size(obs{i}.data);
-        data(i,:)=obs{i}.data(1:D,1);% recopie de chaque colonne de obs{i}.data dans chaque ligne de data
-    end
-    Y=data;
-    
-    case 'joie'
-    load pointsJoie.mat;
-    N=size(points,2); 
-    L=size(points(1).points,1);
-    C=size(points(1).points,2);
-    data =zeros(N,L*C);
-    for i=1:N
-        data(i,:)=reshape(points(i).points,L*C,1);
-    end
-    Y=data;
-    
-    case 'degout'
-    load pointsDegout.mat;
-    N=size(points,2); 
-    L=size(points(1).points,1);
-    C=size(points(1).points,2);
-    data =zeros(N,L*C);
-    for i=1:N
-        data(i,:)=reshape(points(i).points,L*C,1);
-    end
-    Y=data;
-    
-    case 'colere'
-    load pointsColere.mat;
-    N=size(points,2); 
-    L=size(points(1).points,1);
-    C=size(points(1).points,2);
-    data =zeros(N,L*C);
-    for i=1:N
-        data(i,:)=reshape(points(i).points,L*C,1);
-    end
-    Y=data;
-    
-    case 'tristesse'
-    load pointsTristesse.mat;
-    N=size(points,2); 
-    L=size(points(1).points,1);
-    C=size(points(1).points,2);
-    data =zeros(N,L*C);
-    for i=1:N
-        data(i,:)=reshape(points(i).points,L*C,1);
-    end
-    Y=data;
-    
-    case 'surprise'
-    load pointsSurprise.mat;
-    N=size(points,2); 
-    L=size(points(1).points,1);
-    C=size(points(1).points,2);
-    data =zeros(N,L*C);
-    for i=1:N
-        data(i,:)=reshape(points(i).points,L*C,1);
-    end
-    Y=data;
-    
-    case 'testjoie'
-    load pointsTestJoie.mat;
-    N=size(points,2); 
-    L=size(points(1).points,1);
-    C=size(points(1).points,2);
-    data =zeros(N,L*C);
-    for i=1:N
-        data(i,:)=reshape(points(i).points,L*C,1);
-    end
-    Y=data;
-    
     case 'allpoint'
-    load pointsAll.mat;
+    load pointsAllK10.mat; % chargement des données contenues dans le fichier
     N=size(datas,2); 
     L=size(datas(1).points,1);
     C=size(datas(1).points,2);
     data =zeros(N,L*C);
-    lbls=[1,2,3,4,5];
+    lbls=['joie','degout','tristesse','colere','surprise'];
     for i=1:N
         data(i,:)=reshape(datas(i).points,L*C,1);
         %lbls(i,1)=feelIndex;%feelings(feelIndex);
@@ -1056,7 +979,7 @@ function [Y, lbls, Ytest, lblstest] = lvmLoadData(dataset, seedVal)
     Y=data;
     
     case 'alldist'
-    load pointsAllK1.mat;
+    load pointsAllK10.mat;
     N=size(datas,2); 
     L=size(datas(1).dist,1);
     C=size(datas(1).dist,2);
@@ -1069,7 +992,7 @@ function [Y, lbls, Ytest, lblstest] = lvmLoadData(dataset, seedVal)
     Y=data;
     
     case 'testpoint'
-    load pointsTestK10.mat;
+    load pointsTestJoie.mat;
     N=size(datas,2); 
     L=size(datas(1).points,1);
     C=size(datas(1).points,2);
@@ -1079,41 +1002,8 @@ function [Y, lbls, Ytest, lblstest] = lvmLoadData(dataset, seedVal)
     end
     Y=data;
     
-    case 'img123'
-    load image123.mat;
-    N=size(datas,2); 
-    L=size(datas(1).points,1);
-    C=size(datas(1).points,2);
-    data =zeros(N,L*C);
-    for i=1:N
-        data(i,:)=reshape(datas(i).points,L*C,1);
-    end
-    Y=data;
-    
-    case 'img234'
-    load image234.mat;
-    N=size(datas,2); 
-    L=size(datas(1).points,1);
-    C=size(datas(1).points,2);
-    data =zeros(N,L*C);
-    for i=1:N
-        data(i,:)=reshape(datas(i).points,L*C,1);
-    end
-    Y=data;
-    
-    case 'img345'
-    load image345.mat;
-    N=size(datas,2); 
-    L=size(datas(1).points,1);
-    C=size(datas(1).points,2);
-    data =zeros(N,L*C);
-    for i=1:N
-        data(i,:)=reshape(datas(i).points,L*C,1);
-    end
-    Y=data;
-    
-    case 'img12345'
-    load image12345.mat;
+    case 'testdegout'
+    load pointsTestDegout.mat;
     N=size(datas,2); 
     L=size(datas(1).points,1);
     C=size(datas(1).points,2);

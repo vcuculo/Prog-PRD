@@ -90,13 +90,13 @@ if doTest==1
 %     
     iters=100;
     display=1;
-    Xtest = zeros(size(Y, 1),2);
+    X = zeros()
 %     modelTest = fgplvmOptimise(modelTest, display, iters);
-    for i=1:size(Xtest, 1)
-        initXPos = getNearestValue(model.y, Y(i,:));
-        Xtest(i,:) = fgplvmOptimisePoint(model, model.X(initXPos,:), Y(i,:), display, iters);
+    for i=1:size(Y, 1)
+        initXPos = getNearestValue(model.y, Y(i,:));        
+        X(i) = fgplvmOptimisePoint(model, model.X(initXPos,:), Y(i,:), display, iters);
     end
-    returnVal = [returnVal; plot(Xtest(:, 1), Xtest(:, 2), '^-', 'linewidth',1)];
+    returnVal = [returnVal; plot(X(:, 1), X(:, 2), '^-', 'linewidth',1)];
 end
 set(axisHand, 'nextplot', nextPlot);
 set(returnVal, 'markersize', 10);

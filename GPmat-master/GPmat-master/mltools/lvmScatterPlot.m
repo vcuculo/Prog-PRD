@@ -123,7 +123,7 @@ function [ax, data] = lvmScatterPlot(model, YLbls, ax, dims, defaultVals, doTest
 if (nargin == 2)
     doTest=0;
 end
-  data = lvmTwoDPlot(model.X(:, dims), YLbls, symbol,0);
+  data = lvmTwoDPlot(model.X(:, dims), YLbls, symbol,doTest);
   switch model.type
    case 'dnet'
     plot(model.X_u(:, dims(1)), model.X_u(:, dims(2)), 'g.')

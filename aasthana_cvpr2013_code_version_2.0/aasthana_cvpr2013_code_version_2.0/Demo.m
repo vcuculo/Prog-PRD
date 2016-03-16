@@ -33,7 +33,7 @@ visualize=0;
 %------------------------------------------------%
 % % % Load Test Images
 
-index=0;
+% index=0;
 % for j=1:5
 %     for i=1:15
 %         data(index+i).name = strcat(num2str(j),'.',num2str(i),'.png');
@@ -49,18 +49,17 @@ index=0;
 %     index=index+15;
 % end
 %------------------------------------------------%
-for i=1:5
-    data(index+i).name = strcat('1.',num2str(i),'.png');
-    data(index+i).img = im2double(imread(strcat('1.',num2str(i),'.png')));
+for i=1:15
+        data(i).name = strcat('test.',num2str(i),'.png');
+        data(i).img = im2double(imread(strcat('test.',num2str(i),'.png')));
 
-    % % % Required Only for bbox_method = 2; 
-    data(index+i).bbox = []; % Face Detection Bounding Box [x;y;w;h]
+        % % % Required Only for bbox_method = 2; 
+        data(i).bbox = []; % Face Detection Bounding Box [x;y;w;h]
 
-    % % % Initialization to store the results
-    data(index+i).points = []; % MAT containing 66 Landmark Locations
-    data(index+i).pose = []; % POSE information [Pitch;Yaw;Roll]
-end
-
+        % % % Initialization to store the results
+        data(i).points = []; % MAT containing 66 Landmark Locations
+        data(i).pose = []; % POSE information [Pitch;Yaw;Roll]
+    end
 %------------------------------------------------%
 %Run Demo
 
@@ -74,5 +73,5 @@ for i=1:size(data,2)
     datas(i)= struct('points',data(i).points,'dist',dist);
 end
 
-save image12345.mat datas;
+save pointsTest.mat datas;
 disp('DONE');
