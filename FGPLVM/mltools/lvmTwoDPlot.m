@@ -24,8 +24,6 @@ else
 end
 
 if iscell(lbl)
-    lblStr = lbl{2};
-    lbl = lbl{1};
     labelsString = true;
 else
     labelsString = false;
@@ -49,55 +47,29 @@ nextPlot = get(axisHand, 'nextplot');
 labelNo=1;
 deb=1;
 for i = 1:(size(X, 1)/15)
-    if i == 2
-        set(axisHand, 'nextplot', 'add');
-    end
-%     if ~isempty(lbl)
-%         labelNo = find(lbl(i, :));
-%     else
-%         labelNo = 1;
-%     end
-    %try
     returnVal = [returnVal; plot(X(deb:15*i, 1), X(deb:15*i, 2), symbol{labelNo}, 'linewidth',1)];
     if labelsString
-        textReturnVal = [textReturnVal; text(X(i, 1), X(i, 2), ['   ' lblStr{i}])];
+        textReturnVal = [textReturnVal; text(X(15*i, 1), X(15*i, 2), ['   ' lbl{i}])];
     end
     labelNo = labelNo+1;
     deb=(15*i)+1;
-    if connect
-        if i>1
-            line([X(i-1, 1) X(i, 1)], [X(i-1, 2) X(i, 2)]);
-        end
-    end
-    %catch
-    % if strcmp(lasterr, 'Index exceeds matrix dimensions.')
-    %  error(['Only ' num2str(length(symbol)) ' labels supported (it''s easy to add more!)'])
-    % end
-    %end
 end
 
 if doTest==1
     % Set up test model
     dataSetNameTest = 'testpoint';
     [Y, lbls] = lvmLoadData(dataSetNameTest);
-%     optionsTest = fgplvmOptions('ftc');
-%     latentDim = 2;
-%     d = size(Y, 2);
-%     modelTest = fgplvmCreate(latentDim, d, Y, optionsTest);% création du model des valeurs de test
     load model.mat; % load the learned model corresponding to the latent space
-%     
-%     [mean,sigma] = fgplvmPosteriorMeanVar(model, modelTest.X);
-%     
     iters=100;
     display=1;
-    X = zeros()
-%     modelTest = fgplvmOptimise(modelTest, display, iters);
-    for i=1:size(Y, 1)
-        initXPos = getNearestValue(model.y, Y(i,:));        
-        X(i) = fgplvmOptimisePoint(model, model.X(initXPos,:), Y(i,:), display, iters);
+    Xtest = zeros(size(Y, 1),2);
+    for i=1:size(Xtest, 1)
+        initXPos = getNearestValue(model.y, Y(i,:));
+        Xtest(i,:) = fgplvmOptimisePoint(model, model.X(initXPos,:), Y(i,:), display, iters);
     end
-    returnVal = [returnVal; plot(X(:, 1), X(:, 2), '^-', 'linewidth',1)];
+    returnVal = [returnVal; plot(Xtest(:, 1), Xtest(:, 2), '^-', 'linewidth',1)];
 end
+
 set(axisHand, 'nextplot', nextPlot);
 set(returnVal, 'markersize', 10);
 set(returnVal, 'linewidth', 2);

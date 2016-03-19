@@ -45,7 +45,7 @@ function [ax, data] = lvmScatterPlot(model, YLbls, ax, dims, defaultVals, doTest
     symbol = getSymbols(1);
   else
     if iscell(YLbls)
-      symbol = getSymbols(size(YLbls{1},2));
+      symbol = getSymbols(size(YLbls{1},2)+1);
     else
       symbol = getSymbols(size(YLbls,2));
     end

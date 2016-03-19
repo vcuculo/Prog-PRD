@@ -50,8 +50,8 @@ visualize=0;
 % end
 %------------------------------------------------%
 for i=1:15
-        data(i).name = strcat('test.',num2str(i),'.png');
-        data(i).img = im2double(imread(strcat('test.',num2str(i),'.png')));
+        data(i).name = strcat('1.',num2str(i),'.png');
+        data(i).img = im2double(imread(strcat('1.',num2str(i),'.png')));
 
         % % % Required Only for bbox_method = 2; 
         data(i).bbox = []; % Face Detection Bounding Box [x;y;w;h]
@@ -73,5 +73,5 @@ for i=1:size(data,2)
     datas(i)= struct('points',data(i).points,'dist',dist);
 end
 
-save pointsTest.mat datas;
+save pointsTestJoieAppr.mat datas;
 disp('DONE');

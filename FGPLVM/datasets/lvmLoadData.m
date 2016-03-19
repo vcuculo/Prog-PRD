@@ -971,7 +971,7 @@ function [Y, lbls, Ytest, lblstest] = lvmLoadData(dataset, seedVal)
     L=size(datas(1).points,1);
     C=size(datas(1).points,2);
     data =zeros(N,L*C);
-    lbls=['joie','degout','tristesse','colere','surprise'];
+    lbls={'joie','degout','tristesse','colere','surprise'};
     for i=1:N
         data(i,:)=reshape(datas(i).points,L*C,1);
         %lbls(i,1)=feelIndex;%feelings(feelIndex);
@@ -992,7 +992,7 @@ function [Y, lbls, Ytest, lblstest] = lvmLoadData(dataset, seedVal)
     Y=data;
     
     case 'testpoint'
-    load pointsTestJoie.mat;
+    load pointsTest.mat;
     N=size(datas,2); 
     L=size(datas(1).points,1);
     C=size(datas(1).points,2);

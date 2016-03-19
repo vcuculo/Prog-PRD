@@ -3,20 +3,20 @@
 % FGPLVM
 
 % Fix seeds
-randn('seed', 1e5);
-rand('seed', 1e5);
-
-dataSetName = 'allpoint';
-experimentNo = 1;
-% [Y, lbls] = lvmLoadData(dataSetName);
+% randn('seed', 1e5);
+% rand('seed', 1e5);
 % 
+% dataSetName = 'allpoint';
+% experimentNo = 1;
+% [Y, lbls] = lvmLoadData(dataSetName);
+% % 
 % % Set up model
 % options = fgplvmOptions('ftc');
 % latentDim = 2;
 % d = size(Y, 2);
 % 
 % model = fgplvmCreate(latentDim, d, Y, options);
-% 
+% % 
 % % Add dynamics model.
 % options = gpOptions('ftc');
 % options.kern = kernCreate(model.X, {'rbf', 'white'});
@@ -28,19 +28,13 @@ experimentNo = 1;
 % % Optimise the model.
 % iters = 100;
 % display = 1;
-% 
 % model = fgplvmOptimise(model, display, iters);
 % 
 % % Save the results.
 % modelWriteResult(model, dataSetName, experimentNo);
-% save model.mat model;
-% 
-% if exist('printDiagram') & printDiagram
-%   lvmPrintPlot(model, lbls, dataSetName, experimentNo);
-% end
-
-%plot(modelTest.X(:, 1), modelTest.X(:, 2), '^-', 'linewidth',1)
+% save model.mat model lbls;
 
 % Load the results and display dynamically.
 load model.mat;
-lvmResultsDynamic(model.type, dataSetName, experimentNo, 'vector');
+%lvmResultsDynamic(model.type, dataSetName, experimentNo, 'vector');
+lvmVisualise(model, lbls, ['vector' 'Visualise'], ['vector' 'Modify']);
