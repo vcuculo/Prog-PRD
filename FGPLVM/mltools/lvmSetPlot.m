@@ -1,4 +1,4 @@
-function lvmSetPlot
+function lvmSetPlot(Ytest)
 
 % LVMSETPLOT Sets up the plot for visualization of the latent space.
 % FORMAT
@@ -20,7 +20,7 @@ cla(visualiseInfo.plotAxes);
 
 lvmScatterPlot(model, YLbls,   visualiseInfo.plotAxes, ...
                [visualiseInfo.dim1, visualiseInfo.dim2], ...
-               visualiseInfo.latentPos,1);
+               visualiseInfo.latentPos, 1, Ytest);
   
 
 set(get(visualiseInfo.plotAxes, 'title'), 'string', 'X', 'fontsize', 30);

@@ -1,4 +1,4 @@
-function [ax, data] = lvmScatterPlot(model, YLbls, ax, dims, defaultVals, doTest)
+function [ax, data] = lvmScatterPlot(model, YLbls, ax, dims, defaultVals, doTest, Ytest)
 
 % LVMSCATTERPLOT 2-D scatter plot of the latent points.
 % FORMAT
@@ -120,10 +120,11 @@ function [ax, data] = lvmScatterPlot(model, YLbls, ax, dims, defaultVals, doTest
     colormap gray;
     %colorbar
   end
-if (nargin == 2)
+if (nargin < 7)
     doTest=0;
+    Ytest=[];
 end
-  data = lvmTwoDPlot(model.X(:, dims), YLbls, symbol,doTest);
+  data = lvmTwoDPlot(model.X(:, dims), YLbls, symbol, doTest, Ytest);
   switch model.type
    case 'dnet'
     plot(model.X_u(:, dims(1)), model.X_u(:, dims(2)), 'g.')

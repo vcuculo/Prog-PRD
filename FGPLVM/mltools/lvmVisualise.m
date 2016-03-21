@@ -1,4 +1,4 @@
-function lvmVisualise(model, YLbls, ...
+function lvmVisualise(model, YLbls, Ytest, ...
 			visualiseFunction, visualiseModify, varargin)
 
 % LVMVISUALISE Visualise the manifold.
@@ -31,7 +31,7 @@ visualiseInfo.latentPos = zeros(1, model.q);
 visualiseInfo.model = model;
 visualiseInfo.lbls = YLbls;
 visualiseInfo.plotAxes = lvmScatterPlot(model, YLbls);
-lvmSetPlot;
+lvmSetPlot(Ytest);
 if verLessThan('matlab', 'R2014a')
   visualiseInfo.latentHandle = line(0, 0, 'markersize', 20, 'color', ...
                                     [0 0 0], 'marker', '.', 'visible', ...

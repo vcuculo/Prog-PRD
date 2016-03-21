@@ -1,4 +1,4 @@
-function [returnVal, txtReturnVal] = lvmTwoDPlot(X, lbl, symbol, doTest, fhandle)
+function [returnVal, txtReturnVal] = lvmTwoDPlot(X, lbl, symbol, doTest, Y, fhandle)
 
 % LVMTWODPLOT Helper function for plotting the labels in 2-D.
 % FORMAT
@@ -36,7 +36,7 @@ if nargin < 3 || isempty(symbol)
         symbol = getSymbols(size(lbl,2));
     end
 end
-if nargin > 4 && ~isempty(fhandle)
+if nargin > 5 && ~isempty(fhandle)
     axisHand = fhandle;
 else
     axisHand = gca;
@@ -56,9 +56,8 @@ for i = 1:(size(X, 1)/15)
 end
 
 if doTest==1
-    % Set up test model
-    dataSetNameTest = 'testpoint';
-    [Y, lbls] = lvmLoadData(dataSetNameTest);
+%     dataSetNameTest = 'testpoint';
+%     [Y, lbls] = lvmLoadData(dataSetNameTest);
     load model.mat; % load the learned model corresponding to the latent space
     iters=100;
     display=1;
