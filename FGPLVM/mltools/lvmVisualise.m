@@ -23,8 +23,9 @@ function lvmVisualise(model, YLbls, Ytest, ...
 
 global visualiseInfo
 
-figure(1)
+figure('Position', [118   95   552   430]);
 clf
+
 visualiseInfo.dim1 = 1;
 visualiseInfo.dim2 = 2;
 visualiseInfo.latentPos = zeros(1, model.q);
@@ -88,7 +89,7 @@ visualiseInfo.runDynamics = false;
 set(gcf, 'WindowButtonMotionFcn', 'lvmClassVisualise(''move'')')
 set(gcf, 'WindowButtonDownFcn', 'lvmClassVisualise(''click'')')
 
-figure(2)
+figure('Position', [672   104   568   410]);
 clf
 
 if length(visualiseFunction)>4 & strcmp(visualiseFunction(1:5), 'image') & ~isempty(varargin)

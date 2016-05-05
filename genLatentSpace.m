@@ -2,7 +2,7 @@
 load coordinates.mat; % Load datas saved in coordinates.mat
 lbls={'joie','degout','tristesse','colere','surprise'};% labels of the emotions that will construct the latent space
 iters = 100;% Number of iterations to optimise the datas
-getKDist = 0;% 1 to generate the latent space with the K nearest distances and not the coordinates, 0 for the opposite
+getKdist = 0;% 1 to generate the latent space with the K nearest distances and not the coordinates, 0 for the opposite
 
 % Fix seeds
 randn('seed', 1e5);

@@ -1,4 +1,5 @@
 load pointsTest.mat;% Load the datas for the tested emotion
+load model.mat;%
 getKDist = 0;%1 to use the K nearest distances and not the coordinates, 0 for the opposite
 
 N=size(datas,2); 
@@ -21,4 +22,4 @@ Y=data;
 
 % Visualize the latent space with the test datas, represented by light blue
 % triangles
-lvmVisualise(model, lbls, Y, ['vector' 'Visualise'], ['vector' 'Modify']);
+lvmVisualise(model, lbls, Y, ['landmarks' 'Visualise'], ['landmarks' 'Modify']);
